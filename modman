@@ -4,6 +4,6 @@ adminhtml/layout/*					app/design/adminhtml/default/default/layout
 adminhtml/template					app/design/adminhtml/default/default/tempalte
 frontend/layout/*					app/design/frontend/base/default/layout
 frontend/template/dccharge			app/design/frontend/base/default/template/dccharge
-js									js
+js/dutycalculator					js/dutycalculator
 Dutycalculator_Base.xml				app/etc/modules/Dutycalculator_Base.xml
 Dutycalculator_Charge.xml			app/etc/modules/Dutycalculator_Charge.xml
