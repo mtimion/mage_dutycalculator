@@ -1,9 +1,9 @@
 #Mage Dutycalculator
 code								app/code/community
-adminhtml/layout					app/design/adminhtml/layout
-adminhtml/template					app/design/adminhtml/tempalte
-frontend/layout						app/design/frontend/layout
-frontend/tempalte					app/design/frontend/template
+adminhtml/layout					app/design/adminhtml/default/default/layout
+adminhtml/template					app/design/adminhtml/default/default/tempalte
+frontend/layout						app/design/frontend/base/defaultlayout
+frontend/tempalte					app/design/frontend/base/default/template
 js									js
 Dutycalculator_Base.xml				app/etc/modules/Dutycalculator_Base.xml
 Dutycalculator_Charge.xml			app/etc/modules/Dutycalculator_Charge.xml
