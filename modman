@@ -1,6 +1,6 @@
 #Mage Dutycalculator
 code								app/code/community
-adminhtml/layout					app/design/adminhtml/default/default/layout
+adminhtml/layout/*					app/design/adminhtml/default/default/layout
 adminhtml/template					app/design/adminhtml/default/default/tempalte
 frontend/layout						app/design/frontend/base/defaultlayout
 frontend/tempalte					app/design/frontend/base/default/template
