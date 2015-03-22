@@ -1,0 +1,110 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+	<checkout_onepage_review>
+		<reference name="checkout.onepage.review.info.totals">
+			<action method="setTemplate"><template>dccharge/checkout/onepage/review/totals.phtml</template></action>
+			<block type="dccharge/cart_shipping_service_fee" name="checkout.cart.shipping.ddp_service_fee" as="ddp_service_fee" template="dccharge/checkout/onepage/service_fee.phtml"/>
+		</reference>
+	</checkout_onepage_review>
+
+	<checkout_onepage_index translate="label">
+		<reference name="head">
+			<action method="addJs"><script>dutycalculator/checkout.js</script></action>
+		</reference>
+		<reference name="checkout.progress">
+			<action method="setTemplate"><template>dccharge/checkout/onepage/progress.phtml</template></action>
+		</reference>
+	</checkout_onepage_index>
+
+	<checkout_multishipping translate="label">
+		<reference name="head">
+			<action method="addJs"><script>dutycalculator/checkout.js</script></action>
+		</reference>
+	</checkout_multishipping>
+
+	<checkout_multishipping_shipping>
+		<reference name="checkout_shipping">
+			<action method="setTemplate"><template>dccharge/checkout/multishipping/shipping.phtml</template></action>
+			<block type="dccharge/cart_shipping_service_fee" name="checkout.cart.shipping.ddp_service_fee" as="ddp_service_fee" template="dccharge/checkout/multishipping/service_fee.phtml"/>
+		</reference>
+	</checkout_multishipping_shipping>
+
+	<paypal_express_review translate="label">
+		<reference name="head">
+			<action method="addJs"><script>dutycalculator/checkout.js</script></action>
+		</reference>
+		<reference name="paypal.express.review">
+			<action method="setTemplate"><template>dccharge/paypal/express/review.phtml</template></action>
+			<block type="dccharge/cart_shipping_service_fee" name="checkout.cart.shipping.ddp_service_fee" as="ddp_service_fee" template="dccharge/checkout/paypal/express/service_fee.phtml"/>
+		</reference>
+	</paypal_express_review>
+
+	<checkout_onepage_progress>
+		<reference name="root">
+			<action method="setTemplate"><template>dccharge/checkout/onepage/progress.phtml</template></action>
+		</reference>
+	</checkout_onepage_progress>
+
+	<sales_order_view>
+		<reference name="order_totals">
+			<action method="setTemplate"><template>dccharge/sales/order/totals.phtml</template></action>
+			<block type="dccharge/sales_order_total" name="dccharge.sales.order.total" />
+		</reference>
+	</sales_order_view>
+	<sales_order_print>
+		<reference name="order_totals">
+			<action method="setTemplate"><template>dccharge/sales/order/totals.phtml</template></action>
+			<block type="dccharge/sales_order_total" name="dccharge.sales.order.total" />
+		</reference>
+	</sales_order_print>
+	<sales_email_order_items>
+		<reference name="order_totals">
+			<action method="setTemplate"><template>dccharge/sales/order/totals.phtml</template></action>
+			<block type="dccharge/sales_order_total" name="dccharge.sales.order.total" />
+		</reference>
+	</sales_email_order_items>
+
+	<sales_order_invoice>
+		<reference name="invoice_totals">
+			<action method="setTemplate"><template>dccharge/sales/order/totals.phtml</template></action>
+			<block type="dccharge/sales_order_total" name="dccharge.sales.order.total" />
+		</reference>
+	</sales_order_invoice>
+	<sales_order_printinvoice>
+		<reference name="invoice_totals">
+			<action method="setTemplate"><template>dccharge/sales/order/totals.phtml</template></action>
+			<block type="dccharge/sales_order_total" name="dccharge.sales.order.total" />
+		</reference>
+	</sales_order_printinvoice>
+	<sales_email_order_invoice_items>
+		<reference name="invoice_totals">
+			<action method="setTemplate"><template>dccharge/sales/order/totals.phtml</template></action>
+			<block type="dccharge/sales_order_total" name="dccharge.sales.order.total" />
+		</reference>
+	</sales_email_order_invoice_items>
+
+	<sales_order_creditmemo>
+		<reference name="creditmemo_totals">
+			<action method="setTemplate"><template>dccharge/sales/order/totals.phtml</template></action>
+			<block type="dccharge/sales_order_total" name="dccharge.sales.order.total" />
+		</reference>
+	</sales_order_creditmemo>
+	<sales_order_printcreditmemo>
+		<reference name="creditmemo_totals">
+			<action method="setTemplate"><template>dccharge/sales/order/totals.phtml</template></action>
+			<block type="dccharge/sales_order_total" name="dccharge.sales.order.total" />
+		</reference>
+	</sales_order_printcreditmemo>
+	<sales_email_order_creditmemo_items>
+		<reference name="creditmemo_totals">
+			<action method="setTemplate"><template>dccharge/sales/order/totals.phtml</template></action>
+			<block type="dccharge/sales_order_total" name="dccharge.sales.order.total" />
+		</reference>
+	</sales_email_order_creditmemo_items>
+	<checkout_cart_index>
+		<reference name="checkout.cart.shipping">
+			<action method="setTemplate"><template>dccharge/checkout/cart/shipping.phtml</template></action>
+			<block type="dccharge/cart_shipping_service_fee" name="checkout.cart.shipping.ddp_service_fee" as="ddp_service_fee" template="dccharge/checkout/cart/service_fee.phtml"/>
+		</reference>
+	</checkout_cart_index>
+</layout>

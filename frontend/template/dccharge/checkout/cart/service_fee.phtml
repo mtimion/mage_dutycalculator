@@ -1,0 +1,20 @@
+<?php if($this->isOptional()):?>
+	<form id="dc_delivery_duty_options" action="<?php echo $this->getUrl('deliverydutyoptions/deliverydutyoptions/change') ?>">
+		<dl class="sp-methods">
+			<dt>Import Duty & Sales Taxes</dt>
+			<dd>
+				<ul>
+					<?php foreach($this->getDeliveryDutyOptions() as $optionKey=>$optionName):?>
+						<li>
+							<input name="delivery_duty_type" type="radio" value="<?php echo $optionKey?>" id="delivery_duty_type_<?echo $optionKey?>" class="radio" <?php if($this->getCurrentDeliveryOption()===$optionKey) echo ' checked="checked"' ?>/>
+							<label for="delivery_duty_type_<?echo $optionKey?>"><?php echo $optionName?></label>
+						</li>
+					<?php endforeach;?>
+				</ul>
+			</dd>
+		</dl>
+		<div class="buttons-set">
+			<button type="submit" title="<?php echo $this->__('Update') ?>" class="button" name="do" value="<?php echo $this->__('Update') ?>"><span><span><?php echo $this->__('Update') ?></span></span></button>
+		</div>
+	</form>
+<?php endif;?>

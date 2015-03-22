@@ -1,0 +1,22 @@
+<?php if($this->isOptional()):?>
+
+
+	<div class="box box-sp-methods">
+		<div class="pointer"></div>
+		<div class="box-title">
+			<h2><?php echo $this->helper('dccharge')->__('Import Duty & Sales Taxes') ?></h2>
+		</div>
+		<div class="box-content">
+			<dl class="sp-methods">
+				<?php foreach($this->getDeliveryDutyOptions() as $optionKey=>$optionName):?>
+					<dt>
+						<input name="delivery_duty_type" type="radio" value="<?php echo $optionKey?>" id="delivery_duty_type_<?echo $optionKey?>" class="radio" <?php if($this->getCurrentDeliveryOption()===$optionKey) echo ' checked="checked"' ?> onclick="changeServiceFeeForMultishipping(this, '<?php echo $this->getUrl('deliverydutyoptions/deliverydutyoptions/multishippingChange', array('_secure'=>true)) ?>');"/>
+						<label for="delivery_duty_type_<?echo $optionKey?>"><?php echo $optionName?></label>
+					</dt>
+					<dd>
+					</dd>
+				<?php endforeach;?>
+			</dl>
+		</div>
+	</div>
+<?php endif;?>

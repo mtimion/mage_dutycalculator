@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+    <menu>
+        <catalog>
+            <children>
+                <dc_charge translate="title" module="dccharge">
+                    <title>DutyCalculator Rapid Classification tool</title>
+                    <sort_order>190</sort_order>
+                    <action>dccharge/adminhtml_rapid</action>
+                </dc_charge>
+            </children>
+        </catalog>
+    </menu>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <catalog>
+                        <children>
+                            <dc_charge translate="title" module="dccharge">
+                                <title>DutyCalculator Rapid Classification tool</title>
+                                <sort_order>190</sort_order>
+                            </dc_charge>
+                        </children>
+                    </catalog>
+                </children>
+            </admin>
+			<admin>
+				<children>
+					<system>
+						<children>
+							<config>
+								<children>
+									<dc_charge_extension translate="title" module="dccharge">
+										<title>Charge Import Duty &amp; Taxes Section</title>
+										<sort_order>55</sort_order>
+									</dc_charge_extension>
+								</children>
+							</config>
+						</children>
+					</system>
+				</children>
+			</admin>
+        </resources>
+    </acl>
+</config>

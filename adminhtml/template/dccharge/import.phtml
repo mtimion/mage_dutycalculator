@@ -1,0 +1,7 @@
+<div class="entry-edit">
+	<?php echo $this->getFormHtml()?>
+	<?php echo $this->getChildHtml('import.messages');?>
+	<script type="text/javascript">
+		importForm = new varienForm('import_form', '<?php echo $this->getValidationUrl() ?>');
+	</script>
+</div>

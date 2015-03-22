@@ -1,0 +1,17 @@
+<?php if($this->isOptional()):?>
+	<?php $_colspan = $this->helper('tax')->displayCartBothPrices() ? 5 : 3; ?>
+	<tr>
+		<td class="a-right" style="vertical-align: middle; padding-top: 10px;" colspan="<?php echo $_colspan; ?>">
+			<?php echo $this->helper('dccharge')->__('Import Duty & Sales Taxes') ?>
+		</td>
+		<td class="a-right" style="padding-top: 10px;">
+			<form id="dc_delivery_duty_options" action="<?php echo $this->getUrl('deliverydutyoptions/deliverydutyoptions/onepageChange', array('_secure'=>true)) ?>">
+				<select name="delivery_duty_type" onchange="changeServiceFee(); return false;">
+					<?php foreach($this->getDeliveryDutyOptions() as $optionKey=>$optionName):?>
+						<option value="<?php echo $optionKey?>" <?php if($this->getCurrentDeliveryOption()===$optionKey) echo ' selected="selected"' ?>><?php echo $optionName?></option>
+					<?php endforeach;?>
+				</select>
+			</form>
+		</td>
+	</tr>
+<?php endif;?>

@@ -1,0 +1,99 @@
+<?php
+$productParamsForClassification = $this->getProductParams();
+$_categories = $this->getCategories();
+$_suggestedCategories = $this->getSuggestedCategories();
+$categoryId = $this->getDcCategoryId();
+$subcategoryId = $this->getDcSubcategoryId();
+$productId = $this->getDcProductId();
+$script = '';
+foreach ($_categories as $_category)
+{
+	$script .= "getOrCreateDependentCategoryItemByReferenceAndLevel('All categories', 0, 1).addChild(new dependentCategory(" . json_encode($_category['label']) . ", '{$_category['value']}'));\n";
+	if (isset($_category['subcategories']))
+	{
+		foreach ($_category['subcategories'] as $_subCategory)
+		{
+			$script .= "getOrCreateDependentCategoryItemByReferenceAndLevel(" . json_encode($_category['label']) . ", '{$_category['value']}', 2).addChild(new dependentCategory(" . json_encode($_subCategory['label']) . ", '{$_subCategory['value']}'));\n";
+			if (isset($_subCategory['items']))
+			{
+				foreach ($_subCategory['items'] as $_item)
+				{
+					$script .= "getOrCreateDependentCategoryItemByReferenceAndLevel(" . json_encode($_subCategory['label']) . ", '{$_subCategory['value']}', 3).addChild(new dependentCategory(" . json_encode($_item['label']) . ", '{$_item['value']}'));\n";
+				}
+			}
+		}
+	}
+}
+?>
+<script type="text/javascript" src="<?php echo $this->helper('core/js')->getJsUrl('dutycalculator/dependentCategory.js'); ?>"></script>
+<script type="text/javascript">
+	var firstCategory = new dependentCategory('All categories', 0);
+	var secondCategory = null;
+	var thirdCategory = null;
+	<?php echo $script?>
+	document.observe('dom:loaded', function() {
+		<?php if ($productId):?>
+			firstCategory.expand($('dc_product_category'), <?php echo json_encode(array(array('id' => $categoryId, 'items' => array(array('id' => $subcategoryId, 'items' => array(array('id' => $productId)))))));?>);
+			changeCategory($('dc_product_category'),  <?php echo json_encode(array(array('id' => $subcategoryId, 'items' => array(array('id' => $productId)))));?>);
+			changeSubCategory($('dc_product_sub_category'),  <?php echo json_encode(array(array('id' => $productId)));?>);
+		<?php elseif (isset($_suggestedCategories['items']) && count($_suggestedCategories['items']) > 0):?>
+			firstCategory.expand($('dc_product_category'), <?php echo json_encode($_suggestedCategories['items'])?>)
+			<?php if (count($_suggestedCategories['items']) == 1):?>
+				secondCategory = firstCategory.getChildByReference('<?php echo $_suggestedCategories['items'][0]['id']?>');
+				<?php if (count($_suggestedCategories['items'][0]) > 0):?>
+					secondCategory.expand($('dc_product_sub_category'), <?php echo json_encode($_suggestedCategories['items'][0]['items'])?>);
+					<?php if (count($_suggestedCategories['items'][0]['items']) == 1):?>
+						thirdCategory = secondCategory.getChildByReference('<?php echo $_suggestedCategories['items'][0]['items'][0]['id']?>');
+						<?php if (count($_suggestedCategories['items'][0]['items'][0]['items']) > 0):?>
+							thirdCategory.expand($('dc_product_item'), <?php echo json_encode($_suggestedCategories['items'][0]['items'][0]['items'])?>)
+						<?php else:?>
+							thirdCategory.expand($('dc_product_item'))
+						<?php endif;?>
+					<?php endif;?>
+				<?php else:?>
+					secondCategory.expand($('dc_product_sub_category'))
+				<?php endif;?>
+			<?php endif;?>
+		<?php else:?>
+			firstCategory.expand($('dc_product_category'))
+		<?php endif;?>
+	});
+</script>
+<table cellspacing="0" class="form-list">
+	<tbody>
+		<tr>
+			<td class="value" style="padding-left: 0 !important;">
+				<select class="select" id="dc_product_category" onchange="changeCategory(this);">
+					<option value=""><?php echo $this->__('-- Please Select --');?></option>
+				</select>
+			</td>
+			<td class="value" style="width: 100% !important;">
+				<button class="scalable" type="button" onclick="$('send_classification_request').click(); return false;">
+					<span><?php echo $this->__('Cant\'t find my product?');?></span>
+				</button>
+				<a href="<?php echo Mage::getStoreConfig('dc_charge_extension/dccharge/classification_uri')?><?php echo $productParamsForClassification?>" target="_blank" style="display: none;" id="send_classification_request"></a>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" class="value" style="padding-left: 0 !important;">
+				<select class="select" id="dc_product_sub_category" readonly="readonly" onchange="changeSubCategory(this);">
+					<option value=""><?php echo $this->__('-- Please Select --');?></option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" class="value" style="padding-left: 0 !important;">
+				<select class="select" id="dc_product_item" readonly="readonly" name="<?php echo $this->getName();?>">
+					<option value=""><?php echo $this->__('-- Please Select --');?></option>
+				</select>
+			</td>
+		</tr>
+		<?php if ($this->getDcProductId()):?>
+			<tr>
+				<td colspan="2" class="value" style="padding-left: 0 !important;">
+					DutyCalculator category ID: <?php echo $this->getDcProductId();?>
+				</td>
+			</tr>
+		<?php endif;?>
+	</tbody>
+</table>

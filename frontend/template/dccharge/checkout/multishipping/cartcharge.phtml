@@ -1,0 +1,21 @@
+<?php if ($this->isReadyForDislpay()): ?>
+<div class="col2-set">
+	<h2 class="legend">Import duty &amp; taxes</h2>
+	<table class="data-table">
+		<colgroup>
+			<col>
+			<col width="1">
+		</colgroup>
+		<tbody>
+		<tr class="first last">
+			<td class="a-right">
+				Import duty & taxes paid upon delivery
+			</td>
+			<td class="a-right last">
+				<span class="price"><strong><?php echo Mage::helper('checkout')->formatPrice($this->getDuty(), true, true); ?></strong></span>
+			</td>
+		</tr>
+		</tbody>
+	</table>
+</div>
+<?php endif; ?>

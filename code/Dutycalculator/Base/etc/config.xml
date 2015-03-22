@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<modules>
+        <Dutycalculator_Base>
+            <version>0.0.1</version>
+        </Dutycalculator_Base>
+    </modules>
+	<global>
+		<helpers>
+			<dcbase>
+				<class>Dutycalculator_Base_Helper</class>
+			</dcbase>
+		</helpers>
+	</global>
+</config>

@@ -1,0 +1,16 @@
+<?php $this->setPriceDataObject($this->getSource()) ?>
+<?php if ((float) $this->getSource()->getImportDutyTax() >= 0 && ($this->getSource()->getDcOrderId() || $this->getSource()->getFailedCalculation())): ?>
+    <tr>
+		<?php if ($this->getSource()->getFailedCalculation()):?>
+			<td colspan="2"><?php echo Mage::helper('dccharge')->__('Any import duty & taxes are paid upon delivery and are not included in the final price') ?></td>
+		<?php else:?>
+			<?php
+			$title = ($this->getSource()->getDeliveryDutyType() == Dutycalculator_Charge_Helper_Data::DC_DELIVERY_TYPE_DDU) ? 'Estimated import duty & taxes (Not included in grand total, paid upon delivery)' : 'Import duty and taxes';
+			?>
+			<td class="label"><?php echo Mage::helper('dccharge')->__($title) ?></td>
+			<td>
+				<?php echo $this->displayPrices($this->getSource()->getBaseImportDutyTax(), $this->getSource()->getImportDutyTax()); ?>
+			</td>
+		<?php endif;?>
+    </tr>
+<?php endif; ?>

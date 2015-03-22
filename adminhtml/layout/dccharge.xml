@@ -1,0 +1,150 @@
+<?xml version="1.0"?>
+<layout>
+    <dccharge_adminhtml_rapid_index>
+        <reference name="content">
+            <block type="dccharge/adminhtml_rapid_tool" name="index" template="dccharge/index.phtml">
+                <block type="dccharge/adminhtml_rapid_export" name="export" template="dccharge/export.phtml">
+					<block type="core/messages" name="export.messages" as="export.messages" />
+				</block>
+                <block type="dccharge/adminhtml_rapid_import" name="import" template="dccharge/import.phtml">
+					<block type="core/messages" name="import.messages" as="import.messages" />
+				</block>
+            </block>
+        </reference>
+    </dccharge_adminhtml_rapid_index>
+
+	<adminhtml_sales_order_view>
+		<reference name="order_totals">
+			<action method="setTemplate"><template>dccharge/sales/order/totals.phtml</template></action>
+			<block type="dccharge/sales_order_total" name="import_duty" template="dccharge/sales/order/total.phtml">
+				<action method="setAfterCondition"><condition>tax</condition></action>
+			</block>
+			<block type="adminhtml/sales_order_totals_item" name="fee.refunded" template="dccharge/sales/order/refunded.phtml">
+				<action method="setDisplayArea"><area>footer</area></action>
+				<action method="setAfterCondition"><condition>last</condition></action>
+			</block>
+		</reference>
+		<reference name="order_tab_info">
+			<action method="setTemplate"><template>dccharge/sales/order/view/tab/info.phtml</template></action>
+		</reference>
+		<reference name="order_items">
+			<action method="setTemplate"><template>dccharge/sales/order/view/items.phtml</template></action>
+			<action method="addItemRender"><type>default</type><block>adminhtml/sales_order_view_items_renderer_default</block><template>dccharge/sales/order/view/items/renderer/default.phtml</template></action>
+		</reference>
+		<reference name="tax">
+			<action method="setTemplate"><template>dccharge/sales/order/totals/tax.phtml</template></action>
+		</reference>
+	</adminhtml_sales_order_view>
+
+	<adminhtml_sales_order_invoice_updateqty>
+		<reference name="invoice_totals">
+			<action method="setTemplate"><template>dccharge/sales/order/totals.phtml</template></action>
+			<block type="dccharge/sales_order_total" name="import_duty" template="dccharge/sales/order/total.phtml">
+				<action method="setAfterCondition"><condition>tax</condition></action>
+			</block>
+		</reference>
+		<reference name="order_items">
+			<action method="setTemplate"><template>dccharge/sales/order/invoice/create/items.phtml</template></action>
+			<action method="addItemRender"><type>default</type><block>adminhtml/sales_items_renderer_default</block><template>dccharge/sales/order/invoice/create/items/renderer/default.phtml</template></action>
+		</reference>
+		<reference name="tax">
+			<action method="setTemplate"><template>dccharge/sales/order/totals/tax.phtml</template></action>
+		</reference>
+	</adminhtml_sales_order_invoice_updateqty>
+
+	<adminhtml_sales_order_creditmemo_new>
+		<reference name="creditmemo_totals">
+			<action method="setTemplate"><template>dccharge/sales/order/totals.phtml</template></action>
+			<block type="dccharge/sales_order_total" name="import_duty" template="dccharge/sales/order/total.phtml">
+				<action method="setAfterCondition"><condition>tax</condition></action>
+			</block>
+		</reference>
+		<reference name="order_items">
+			<action method="setTemplate"><template>dccharge/sales/order/creditmemo/create/items.phtml</template></action>
+			<action method="addItemRender"><type>default</type><block>adminhtml/sales_items_renderer_default</block><template>dccharge/sales/order/creditmemo/create/items/renderer/default.phtml</template></action>
+		</reference>
+		<reference name="form">
+			<action method="setTemplate"><template>dccharge/sales/order/creditmemo/create/form.phtml</template></action>
+		</reference>
+		<reference name="tax">
+			<action method="setTemplate"><template>dccharge/sales/order/totals/tax.phtml</template></action>
+		</reference>
+	</adminhtml_sales_order_creditmemo_new>
+
+	<adminhtml_sales_order_creditmemo_updateqty>
+		<reference name="creditmemo_totals">
+			<action method="setTemplate"><template>dccharge/sales/order/totals.phtml</template></action>
+			<block type="dccharge/sales_order_total" name="import_duty" template="dccharge/sales/order/total.phtml">
+				<action method="setAfterCondition"><condition>tax</condition></action>
+			</block>
+		</reference>
+		<reference name="order_items">
+			<action method="setTemplate"><template>dccharge/sales/order/creditmemo/create/items.phtml</template></action>
+			<action method="addItemRender"><type>default</type><block>adminhtml/sales_items_renderer_default</block><template>dccharge/sales/order/creditmemo/create/items/renderer/default.phtml</template></action>
+		</reference>
+		<reference name="tax">
+			<action method="setTemplate"><template>dccharge/sales/order/totals/tax.phtml</template></action>
+		</reference>
+	</adminhtml_sales_order_creditmemo_updateqty>
+
+	<adminhtml_sales_order_creditmemo_view>
+		<reference name="creditmemo_items">
+			<action method="setTemplate"><template>dccharge/sales/order/creditmemo/view/items.phtml</template></action>
+			<action method="addItemRender"><type>default</type><block>adminhtml/sales_items_renderer_default</block><template>dccharge/sales/order/creditmemo/view/items/renderer/default.phtml</template></action>
+		</reference>
+		<reference name="creditmemo_totals">
+			<action method="setTemplate"><template>dccharge/sales/order/totals.phtml</template></action>
+			<block type="adminhtml/sales_order_totals_item" name="fee.refunded" template="dccharge/sales/order/refunded.phtml">
+				<action method="setDisplayArea"><area>footer</area></action>
+			</block>
+			<block type="dccharge/sales_order_total" name="import_duty" template="dccharge/sales/order/total.phtml">
+				<action method="setAfterCondition"><condition>tax</condition></action>
+			</block>
+		</reference>
+		<reference name="form">
+			<action method="setTemplate"><template>dccharge/sales/order/creditmemo/view/form.phtml</template></action>
+		</reference>
+		<reference name="tax">
+			<action method="setTemplate"><template>dccharge/sales/order/totals/tax.phtml</template></action>
+		</reference>
+	</adminhtml_sales_order_creditmemo_view>
+
+	<adminhtml_sales_order_invoice_view>
+		<reference name="invoice_items">
+			<action method="setTemplate"><template>dccharge/sales/order/invoice/view/items.phtml</template></action>
+			<action method="addItemRender"><type>default</type><block>adminhtml/sales_items_renderer_default</block><template>dccharge/sales/order/invoice/view/items/renderer/default.phtml</template></action>
+		</reference>
+		<reference name="invoice_totals">
+			<action method="setTemplate"><template>dccharge/sales/order/totals.phtml</template></action>
+			<block type="dccharge/sales_order_total" name="import_duty" template="dccharge/sales/order/total.phtml">
+				<action method="setAfterCondition"><condition>tax</condition></action>
+			</block>
+		</reference>
+		<reference name="form">
+			<action method="setTemplate"><template>dccharge/sales/order/invoice/view/form.phtml</template></action>
+		</reference>
+		<reference name="tax">
+			<action method="setTemplate"><template>dccharge/sales/order/totals/tax.phtml</template></action>
+		</reference>
+	</adminhtml_sales_order_invoice_view>
+
+	<adminhtml_sales_order_invoice_new>
+		<reference name="invoice_totals">
+			<action method="setTemplate"><template>dccharge/sales/order/totals.phtml</template></action>
+			<block type="dccharge/sales_order_total" name="import_duty" template="dccharge/sales/order/total.phtml">
+				<action method="setAfterCondition"><condition>tax</condition></action>
+			</block>
+		</reference>
+		<reference name="order_items">
+			<action method="setTemplate"><template>dccharge/sales/order/invoice/create/items.phtml</template></action>
+			<action method="addItemRender"><type>default</type><block>adminhtml/sales_items_renderer_default</block><template>dccharge/sales/order/invoice/create/items/renderer/default.phtml</template></action>
+		</reference>
+		<reference name="form">
+			<action method="setTemplate"><template>dccharge/sales/order/invoice/create/form.phtml</template></action>
+		</reference>
+		<reference name="tax">
+			<action method="setTemplate"><template>dccharge/sales/order/totals/tax.phtml</template></action>
+		</reference>
+	</adminhtml_sales_order_invoice_new>
+
+</layout>

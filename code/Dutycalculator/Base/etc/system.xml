@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<tabs>
+		<dutycalculator translate="label" module="dcbase">
+			<label>DutyCalculator Extensions</label>
+			<sort_order>900</sort_order>
+		</dutycalculator>
+	</tabs>
+</config>

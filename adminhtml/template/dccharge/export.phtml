@@ -1,0 +1,7 @@
+<div class="entry-edit">
+	<?php echo $this->getFormHtml()?>
+	<?php echo $this->getChildHtml('export.messages');?>
+	<script type="text/javascript">
+		exportForm = new varienForm('export_form', '<?php echo $this->getValidationUrl() ?>');
+	</script>
+</div>

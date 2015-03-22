@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<Dutycalculator_Base>
+			<active>true</active>
+			<codePool>community</codePool>
+		</Dutycalculator_Base>
+	</modules>
+</config>

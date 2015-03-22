@@ -1,0 +1,15 @@
+<?php if($this->getSource() instanceof Mage_Sales_Model_Order){ ?>
+<?php if ((float) $this->getSource()->getImportDutyTaxRefunded() && $this->getSource()->getDeliveryDutyType() == Dutycalculator_Charge_Helper_Data::DC_DELIVERY_TYPE_DDP): ?>
+    <tr>
+        <td class="label"><strong><?php echo Mage::helper('dccharge')->__('Import Duty And Taxes refunded to customer') ?></strong></td>
+        <td class="emph"><strong><?php echo $this->displayPrices($this->getSource()->getBaseImportDutyTaxRefunded(), $this->getSource()->getImportDutyTaxRefunded()); ?></strong></td>
+    </tr>
+<?php endif; ?>
+<?php } else { ?>
+<?php if ((float) $this->getSource()->getImportDutyTax() && $this->getSource()->getDeliveryDutyType() == Dutycalculator_Charge_Helper_Data::DC_DELIVERY_TYPE_DDP): ?>
+    <tr>
+        <td class="label"><strong><?php echo Mage::helper('dccharge')->__('Import Duty And Taxes Refunded') ?></strong></td>
+        <td class="emph"><strong><?php echo $this->displayPrices($this->getSource()->getBaseImportDutyTax(), $this->getSource()->getImportDutyTax()); ?></strong></td>
+    </tr>
+<?php endif; 
+}?>

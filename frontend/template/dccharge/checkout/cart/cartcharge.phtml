@@ -1,0 +1,18 @@
+<?php echo $this->getChildHtml('totals');?>
+<?php if ($this->isReadyForDislpay()): ?>
+<table>
+	<colgroup>
+		<col>
+		<col width="1">
+	</colgroup>
+	<tbody>
+		<tr>
+			<td colspan="1" class="a-right" style="">
+				Import duty & taxes paid upon delivery
+			</td>
+			<td class="a-right" style="">
+				<span class="price"><?php echo Mage::helper('checkout')->formatPrice($this->getDuty(), true, true); ?></span></td>
+		</tr>
+	</tbody>
+</table>
+<?php endif; ?>
