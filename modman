@@ -1,9 +1,12 @@
 #Mage Dutycalculator
-code								app/code/community
-adminhtml/layout/*					app/design/adminhtml/default/default/layout
-adminhtml/template					app/design/adminhtml/default/default/tempalte
-frontend/layout/*					app/design/frontend/base/default/layout
-frontend/template/dccharge			app/design/frontend/base/default/template/dccharge
-js/dutycalculator/*					js/dutycalculator
-Dutycalculator_Base.xml				app/etc/modules/Dutycalculator_Base.xml
-Dutycalculator_Charge.xml			app/etc/modules/Dutycalculator_Charge.xml
+app/code/community/Dutycalculator/Base/*						app/code/community/Dutycalculator/Base
+app/code/community/Dutycalculator/Charge/*						app/code/community/Dutycalculator/Charge
+app/design/adminhtml/default/default/layout/dccharge.xml		app/design/adminhtml/default/default/layout/dccharge.xml
+app/design/adminhtml/default/default/template/dccharge/*		app/design/adminhtml/default/default/template/dccharge
+app/design/frontend/base/default/layout/dccharge.xml			app/design/frontend/base/default/layout/dccharge.xml
+app/design/frontend/base/default/template/dccharge/*			app/design/frontend/base/default/template/dccharge
+app/etc/modules/Dutycalculator_Base.xml							app/etc/modules/Dutycalculator_Base.xml
+app/etc/modules/Dutycalculator_Charge.xml						app/etc/modules/Dutycalculator_Charge.xml
+
+js/dutycalculator/*									js/dutycalculator
+
