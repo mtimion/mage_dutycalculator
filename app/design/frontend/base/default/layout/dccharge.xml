@@ -101,10 +101,10 @@
 			<block type="dccharge/sales_order_total" name="dccharge.sales.order.total" />
 		</reference>
 	</sales_email_order_creditmemo_items>
-	<checkout_cart_index>
+	<!-- <checkout_cart_index>
 		<reference name="checkout.cart.shipping">
 			<action method="setTemplate"><template>dccharge/checkout/cart/shipping.phtml</template></action>
 			<block type="dccharge/cart_shipping_service_fee" name="checkout.cart.shipping.ddp_service_fee" as="ddp_service_fee" template="dccharge/checkout/cart/service_fee.phtml"/>
 		</reference>
-	</checkout_cart_index>
+	</checkout_cart_index> -->
 </layout>
