@@ -39,8 +39,15 @@ class Dutycalculator_Charge_Model_Sales_Pdf_Tax extends Mage_Sales_Model_Order_P
      */
     public function getTotalsForDisplay()
     {
-		return array();
+        return array(
+            'amount'   => $this->getAmount(),
+            'label'    => Mage::helper('dccharge')->__('Import duty and taxes').':',
+            'font_size'=> $this->getFontSize() ? $this->getFontSize() : 7,
+        );
     }
 
-
+    public function getTitle()
+    {
+        return Mage::helper('dccharge')->__('Import duty and taxes').':';
+    }
 }
