@@ -24,7 +24,16 @@ $productAttributesSetup->addAttribute('catalog_product', 'dc_product_id', array(
 																			 'note'            => '',
 																			 'global'          => Mage_Catalog_Model_Resource_Eav_Attribute::SCOPE_WEBSITE));
 
-$productAttributesSetup->addAttributeToGroup('catalog_product', 'Default', 'Prices', 'dc_product_id', 100);
+
+/**
+ * get all attribute sets for products
+ */
+$entityType = Mage::getModel('catalog/product')->getResource()->getTypeId();
+$collection = Mage::getResourceModel('eav/entity_attribute_set_collection')->setEntityTypeFilter($entityType);
+$allSet = array();
+foreach($collection as $coll){
+    $productAttributesSetup->addAttributeToGroup('catalog_product', $coll->getAttributeSetName(), 'Prices', 'dc_product_id', 100);
+}
 
 $installer->getConnection()->addColumn($this->getTable('sales/order'), 'dc_order_id', 'int(11) NOT NULL DEFAULT 0');
 $installer->getConnection()->addColumn($this->getTable('sales/invoice'), 'dc_order_id', 'int(11) NOT NULL DEFAULT 0');
